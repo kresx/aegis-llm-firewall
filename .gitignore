@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# Local Database & Cache
+data/security_audit.db
+.cache/
+
+# IDEs
+.vscode/
+.idea/
