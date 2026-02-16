@@ -10,11 +10,9 @@ def init_db():
     os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
-    
-    # Enable WAL mode: Allows concurrent reads and writes without locking
+
     cursor.execute("PRAGMA journal_mode=WAL;")
-    
-    # Create the security logs table
+
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS security_logs (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -60,7 +58,6 @@ def log_event(event_data: dict):
         conn.commit()
         conn.close()
     except Exception as e:
-        print(f"❌ Logging Error: {str(e)}")
+        print(f" Logging Error: {str(e)}")
 
-# Initialize DB on module import
 init_db()
